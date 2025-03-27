@@ -13,12 +13,13 @@ import {
 } from "@/components/ui/popover";
 import { Settings, Send, Phone, Mic, Paperclip, ImageIcon } from "lucide-react";
 
-import { generateChatResponse } from "../actions/chat.actions";
 import ProfileSettings from "./_components/ProfileSettings";
 import ChatMessage from "./_components/ChatMessage";
+import type { Message } from "@/types/types";
+import { generateChatResponse } from "@/actions/chat.actions";
 
 // initial messages to make the chat look populated
-const initialMessages = [
+const initialMessages: Message[] = [
   {
     id: "1",
     role: "assistant",
@@ -46,20 +47,20 @@ const initialMessages = [
   {
     id: "5",
     role: "assistant",
-    content: "that's good to hear! let's ",
+    content: "that's good to hear! let's grab lunch tomorrow then?",
     timestamp: "10:34 AM",
   },
 ];
 
 export default function ChatPage() {
-  const [contactName, setContactName] = useState("Alex");
+  const [contactName, setContactName] = useState("Hazel");
   const [contactImage, setContactImage] = useState("");
   const [contactPersonality, setContactPersonality] = useState(
     "friendly, casual, and sometimes witty"
   );
   const [isOnline, setIsOnline] = useState(true);
   const [isTyping, setIsTyping] = useState(false);
-  const [messages, setMessages] = useState(initialMessages);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -72,12 +73,13 @@ export default function ChatPage() {
     setInput(e.target.value);
   };
 
+  // message submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     // add user message
-    const userMessage = {
+    const userMessage: Message = {
       id: Date.now().toString(),
       role: "user",
       content: input,
@@ -87,7 +89,8 @@ export default function ChatPage() {
       }),
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    const updatedMessages = [...messages, userMessage];
+    setMessages(updatedMessages);
     setInput("");
 
     // show typing indicator
@@ -97,6 +100,7 @@ export default function ChatPage() {
       // generate ai response
       const aiResponse = await generateChatResponse(
         input,
+        updatedMessages,
         contactName,
         contactPersonality
       );
@@ -109,7 +113,7 @@ export default function ChatPage() {
         setIsTyping(false);
 
         // add ai response
-        const assistantMessage = {
+        const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
           role: "assistant",
           content: aiResponse,
@@ -129,7 +133,7 @@ export default function ChatPage() {
 
   return (
     <div className="flex flex-col h-screen bg-gray-100">
-      {/* Header */}
+      {/* header */}
       <header className="bg-white border-b p-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10">

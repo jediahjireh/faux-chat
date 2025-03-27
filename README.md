@@ -1,19 +1,24 @@
 # Faux Chat Application
 
+![Faux Chat Banner](/public/placeholder.svg)
+
 A realistic messenger-style chat application that uses AI to simulate conversations. This app is designed to look like a regular messaging app but uses Google's Generative AI to respond to messages.
 
-## Features
+## Overview
 
-- **Realistic Messenger UI**: Looks like a standard messaging app with chat bubbles, typing indicators, and timestamps
-- **Customisable Contact**: Set the name, profile picture, and personality of your "contact"
-- **AI-Powered Responses**: Uses Google's Generative AI to generate contextually relevant responses
-- **Online Status Toggle**: Option to show the contact as online or offline
-- **Mobile-Responsive Design**: Works well on both desktop and mobile devices
+Faux Chat is a realistic messenger-style application that simulates conversations using AI. It's designed to look and function exactly like a standard messaging app but uses Google's Generative AI to respond to messages. This creates the appearance of chatting with a real person while actually interacting with an AI.
+
+**Primary Use Case**: For situations where you want to appear engaged in conversation (e.g. avoiding awkward social situations, practicing conversation skills or demonstrating UI designs).
 
 <!-- TOC -->
 
 - [Faux Chat Application](#faux-chat-application)
+  - [Overview](#overview)
   - [Features](#features)
+    - [Core Features](#core-features)
+    - [Technical Features](#technical-features)
+  - [Screenshots](#screenshots)
+  - [Technical Architecture](#technical-architecture)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Key Technologies](#key-technologies)
@@ -49,6 +54,38 @@ A realistic messenger-style chat application that uses AI to simulate conversati
   - [Contributing](#contributing)
     - [Development Guidelines](#development-guidelines)
   - [Acknowledgments](#acknowledgments)
+
+## Features
+
+### Core Features
+
+- **Authentic Messenger UI:** Mimics popular messaging apps with chat bubbles, typing indicators and timestamps
+- **Customisable Contact:** Set name, profile picture and personality of your virtual contact
+- **AI-Powered Responses:** Uses Google's Generative AI to generate contextually relevant responses
+- **Conversation Context:** AI maintains context from previous messages for a natural conversational flow
+- **Realistic Typing Indicators:** Shows typing animation with duration proportional to message length
+- **Pre-populated Chat History:** Starts with existing messages to look like an ongoing conversation
+- **Online/Offline Status:** Toggle your contact's online status
+- **Mobile-Responsive Design:** Works seamlessly on both desktop and mobile devices
+
+### Technical Features
+
+- **Next.js App Router:** Built with the latest Next.js features
+- **Server Actions:** Uses Next.js server actions for AI integration
+- **AI SDK Integration:** Leverages the Vercel AI SDK for Google Generative AI
+- **Conversation Memory:** Maintains context across multiple messages
+- **shadcn/ui Components:** Utilises high-quality UI components
+- **Tailwind CSS:** Fully responsive and customisable styling
+
+## Screenshots
+
+![Chat Interface](/public/screenshots/chat-interface.png)
+![Settings Panel](/public/screenshots/settings-panel.png)
+
+## Technical Architecture
+
+Faux Chat is built with a modern React-based architecture:
+`User Input → Client Component → Server Action → Google AI → Response → UI Update`
 
 ## Getting Started
 
@@ -256,14 +293,14 @@ The application uses Tailwind CSS with shadcn/ui components:
 1. **Customise Your Contact:**
 
 1. Click the settings icon (⚙️) in the top right corner
-1. Modify the contact's name, profile picture, and personality
+1. Modify the contact's name, profile picture and personality
 1. Toggle online/offline status
 
 ### Personality Customisation
 
 The personality field accepts free-form text describing how your contact should respond. Examples:
 
-- "friendly, casual, and sometimes witty"
+- "friendly, casual and sometimes witty"
 - "professional and formal with occasional humor"
 - "sarcastic and always making jokes"
 - "caring and supportive, asks a lot of questions"
@@ -307,14 +344,14 @@ Planned implementation for sending and receiving voice messages:
 **Technical Implementation:**
 
 - Use Web Audio API for recording
-- Integrate with a TTS service (e.g., Google Cloud TTS)
+- Integrate with a TTS service (e.g. Google Cloud TTS)
 - Store audio files temporarily in browser storage
 
 ### Voice Call Simulation
 
 Future enhancement to simulate voice calls:
 
-- **Call Triggers:** Type specific commands (e.g., "/call") to initiate calls
+- **Call Triggers:** Type specific commands (e.g. "/call") to initiate calls
 - **Call Interface:** Create a realistic call screen overlay
 - **Audio Playback:** Play pre-recorded audio during "calls"
 - **Call History:** Add call entries to the chat history
@@ -387,7 +424,7 @@ If you encounter issues not covered here:
 
 1. Check the [GitHub Issues](https://github.com/jediahjireh/faux-chat/issues) page
 2. Create a new issue with detailed information about the problem
-3. Include steps to reproduce, expected behaviour, and actual behaviour
+3. Include steps to reproduce, expected behaviour and actual behaviour
 
 ## Contributing
 
