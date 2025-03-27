@@ -23,8 +23,8 @@ A realistic messenger-style chat application that uses AI to simulate conversati
     - [Project Structure](#project-structure)
     - [Key Components](#key-components)
       - [1. Main Chat Interface (`app/page.tsx`)](#1-main-chat-interface-apppagetsx)
-      - [2. Chat Message Component (`components/chat-message.tsx`)](#2-chat-message-component-componentschat-messagetsx)
-      - [3. Profile Settings Component (`components/profile-settings.tsx`)](#3-profile-settings-component-componentsprofile-settingstsx)
+      - [2. Chat Message Component (`app/_components/chat-message.tsx`)](#2-chat-message-component-app_componentschat-messagetsx)
+      - [3. Profile Settings Component (`app/_components/profile-settings.tsx`)](#3-profile-settings-component-app_componentsprofile-settingstsx)
     - [Server Actions](#server-actions)
       - [Chat Action (`app/actions/chat.actions.ts`)](#chat-action-appactionschatactionsts)
     - [AI Integration](#ai-integration)
@@ -111,14 +111,15 @@ Navigate to the default localhost (typically [http://localhost:3000](http://loca
 
 ```plaintext
 faux-chat/
+├── actions/                  # Server Actions
+│   └── chat.actions.ts       # AI response generation
 ├── app/                      # Next.js App Router
-│   ├── actions/              # Server Actions
-│   │   └── chat.actions.ts   # AI response generation
-│   ├── page.tsx              # Main chat interface
-│   └── layout.tsx            # Root layout
-├── components/               # React components
-│   ├── chat-message.tsx      # Message bubble component
-│   ├── profile-settings.tsx  # Contact settings panel
+│   ├── _components/             # Chat components
+│   │     └── chat-message.tsx      # Message bubble component
+│   │     └── profile-settings.tsx  # Contact settings panel
+│   ├── layout.tsx            # Root layout
+│   └── page.tsx              # Main chat interface
+├── components/             # React components
 │   └── ui/                   # shadcn/ui components
 ├── public/                   # Static assets
 ├── styles/                   # Global styles
@@ -166,7 +167,7 @@ export default function ChatPage() {
 }
 ```
 
-#### 2. Chat Message Component (`components/chat-message.tsx`)
+#### 2. Chat Message Component (`app/_components/chat-message.tsx`)
 
 Renders individual message bubbles with different styles for user and AI messages.
 
@@ -183,7 +184,7 @@ export default function ChatMessage({ message, isUser, timestamp }) {
 }
 ```
 
-#### 3. Profile Settings Component (`components/profile-settings.tsx`)
+#### 3. Profile Settings Component (`app/_components/profile-settings.tsx`)
 
 Allows customisation of the AI contact's profile.
 

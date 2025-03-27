@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/popover";
 import { Settings, Send, Phone, Mic, Paperclip, ImageIcon } from "lucide-react";
 
-import { generateChatResponse } from "./actions/chat.actions";
+import { generateChatResponse } from "../actions/chat.actions";
 import ProfileSettings from "./_components/ProfileSettings";
 import ChatMessage from "./_components/ChatMessage";
 
